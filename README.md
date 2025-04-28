@@ -9,9 +9,10 @@
   <br/>
 </div>
 
-[//]: # (![本地路径]&#40;./resources/overview.pdf&#41;)
-<img src=".\resources\overview.pdf">  
+<img src=".\resources\overview.png">  
 
+
+ssss
 ## Introduction
 This repository is the PyTorch Implementation for paper: 
 [Learning to Cooperate for Continual Learning with Pre-training and Parameter-Efficient Fine-Tuning]().
