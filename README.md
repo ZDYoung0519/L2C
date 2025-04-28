@@ -28,7 +28,12 @@ Our code will be released soon.
 - numpy==1.21.6
 - tqdm
 
-```pip install -r requirements.txt```
+Run the following command to setup the environment.
+```
+conda create -n l2c python=3.8
+conda activate l2c
+pip3 install -r requirements.txt
+```
 
 ## Features
 ### Datasets
