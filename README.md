@@ -8,11 +8,9 @@
   </div>
   <br/>
 </div>
+<img src=".\resources\overview.png">
 
-<img src=".\resources\overview.png">  
 
-
-ssss
 ## Introduction
 This repository is the PyTorch Implementation for paper: 
 [Learning to Cooperate for Continual Learning with Pre-training and Parameter-Efficient Fine-Tuning]().
@@ -124,5 +122,6 @@ This repository is mainly based on [HiDe-Prompt](https://github.com/thu-ml/HiDe-
 ## Citation
 If you find this repository useful, please cite using this BibTeX:
 ```
-None
+@misc{
+}
 ```
