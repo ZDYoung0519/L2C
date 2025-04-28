@@ -56,9 +56,9 @@ pip3 install -r requirements.txt
 
 ## Preparation for Datasets and Pre-training weights
 Download the datasets and place them in a directory. In my case, I place them at ```/home/zdy/mydatasets```.
-Then you have to modify the ```data_path``` in each config file before running.
+Then you have to modify the default value of ```data-root``` in the `parse_args` function in `main.py`.
 
-Likewise, place the downloaded checkpoints in one specific directory and modify ```pretrain_path``` in all config files before running.
+Likewise, place the downloaded checkpoints in one specific directory and modify ```pretraining-root``` .
 
 ### Training and evaluation
 Take ```CIFAR100``` with ```vitb_in21k``` as an example, you can run the below command to for training and evaluating with 4 gpus.
