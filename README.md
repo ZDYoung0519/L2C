@@ -73,14 +73,14 @@ CUDA_VISIBLE_DEVICES=$devices python -m torch.distributed.launch \
       --nproc_per_node=4 \
       --master_port=22323 \
       --use_env main.py \
-      --config ./configs/continual_lora_${dataset}_10t_${pretrain}.py
+      --config ./configs/cl_lora_${dataset}_10t_${pretrain}.py
 
 # Train experts (validate with only one selected expert)
 CUDA_VISIBLE_DEVICES=$devices python -m torch.distributed.launch \
       --nproc_per_node=4 \
       --master_port=22325 \
       --use_env main.py \
-      --config-tp ./configs/continual_lora_${dataset}_10t_${pretrain}.py \
+      --config-tp ./configs/cl_lora_${dataset}_10t_${pretrain}.py \
       --config ./configs/l2c_lora_${dataset}_10t_${pretrain}.py
 
 # validate with top-k aggregation
@@ -90,11 +90,14 @@ CUDA_VISIBLE_DEVICES=$devices python -m torch.distributed.launch \
       --use_env main.py \
       --eval-only \
       --cfg-options topk_val=5\
-      --config-tp ./configs/continual_lora_${dataset}_10t_${pretrain}.py \
+      --config-tp ./configs/cl_lora_${dataset}_10t_${pretrain}.py \
       --config ./configs/l2c_lora_${dataset}_10t_${pretrain}.py
 ```
+Note, when training experts, the evaluation is based on only **one single expert** to save evaluation time.
+Therefore, you can ignore the evaluation results during training.
 
-The results will be saved in the ```output/continual_lora_${dataset}_10t_${pretrain}``` and ```output/l2c_lora_${dataset}_10t_${pretrain}```directory.
+The final evaluation with **TopK experts** will be done after all experts and tasks are finished. 
+And the model ckpts and training logs will be saved in the ```output/cl_lora_${dataset}_10t_${pretrain}``` and ```output/l2c_lora_${dataset}_10t_${pretrain}```directory.
 
 ## Acknowledgement
 This repository is mainly based on [HiDe-Prompt](https://github.com/thu-ml/HiDe-Prompt) and [SLCA](https://github.com/GengDavid/SLCA). We extend our gratitude to the contributors of these projects.
